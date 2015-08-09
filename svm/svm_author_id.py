@@ -29,31 +29,31 @@ features_train, features_test, labels_train, labels_test = preprocess()
 from sklearn import svm
 from sklearn.metrics import accuracy_score
 
-# clf = svm.SVC(kernel="linear")
-# 
-# t0 = time()
-# clf.fit(features_train, labels_train)
-# print "full dataset Linear SVM training time:", round(time()-t0, 3), "s"
-# 
-# t0 = time()
-# pred = clf.predict(features_test)
-# print "full dataset Linear SVM predicting time:", round(time()-t0, 3), "s"
-# 
-# print "full dataset Linear SVM accuracy score: %f" % accuracy_score(labels_test, pred)
-# 
-clf = svm.SVC(C=10000, kernel="rbf")
+clf = svm.SVC(kernel="linear")
  
 t0 = time()
 clf.fit(features_train, labels_train)
-print "full dataset RBF[C=10000] SVM training time:", round(time()-t0, 3), "s"
+print "full dataset Linear SVM training time:", round(time()-t0, 3), "s"
  
 t0 = time()
 pred = clf.predict(features_test)
-print "full dataset RBF[C=10000] SVM predicting time:", round(time()-t0, 3), "s"
+print "full dataset Linear SVM predicting time:", round(time()-t0, 3), "s"
  
-print "full dataset RBF[C=10000] SVM accuracy score: %f" % accuracy_score(labels_test, pred)
-
-print "full dataset RBF[C=10000] SVM predict of class 1: %f" % sum(pred)
+print "full dataset Linear SVM accuracy score: %f" % accuracy_score(labels_test, pred)
+# 
+# clf = svm.SVC(C=10000, kernel="rbf")
+#  
+# t0 = time()
+# clf.fit(features_train, labels_train)
+# print "full dataset RBF[C=10000] SVM training time:", round(time()-t0, 3), "s"
+#  
+# t0 = time()
+# pred = clf.predict(features_test)
+# print "full dataset RBF[C=10000] SVM predicting time:", round(time()-t0, 3), "s"
+#  
+# print "full dataset RBF[C=10000] SVM accuracy score: %f" % accuracy_score(labels_test, pred)
+# 
+# print "full dataset RBF[C=10000] SVM predict of class 1: %f" % sum(pred)
 #
 #  
 # features_train = features_train[:len(features_train)/100] 
