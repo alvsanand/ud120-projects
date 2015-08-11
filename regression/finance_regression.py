@@ -32,20 +32,31 @@ feature_train, feature_test, target_train, target_test = train_test_split(featur
 train_color = "b"
 test_color = "b"
 
-
-
 ### Your regression goes here!
 ### Please name it reg, so that the plotting code below picks it up and 
 ### plots it correctly. Don't forget to change the test_color from "b" to "r"
 ### to differentiate training points from test points.
+from sklearn.linear_model import LinearRegression
+
+reg = LinearRegression()
+reg.fit(feature_train, target_train)
+
+test_color = "r"
+
+print(reg.coef_)
+print(reg.intercept_)
+
+print reg.score(feature_train, target_train)
+print reg.score(feature_test, target_test)
 
 
+features_list = ["bonus", "long_term_incentive"]
+reg.fit(feature_train, target_train)
 
+print reg.score(feature_test, target_test)
 
-
-
-
-
+reg.fit(feature_test, target_test)
+print(reg.coef_)
 ### draw the scatterplot, with color-coded training and testing points
 import matplotlib.pyplot as plt
 for feature, target in zip(feature_test, target_test):
@@ -65,6 +76,7 @@ try:
     plt.plot( feature_test, reg.predict(feature_test) )
 except NameError:
     pass
+
 plt.xlabel(features_list[1])
 plt.ylabel(features_list[0])
 plt.legend()
