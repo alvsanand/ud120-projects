@@ -36,6 +36,23 @@ labels_train   = labels_train[:150]
 
 
 ### your code goes here
+print "training points: %d" % len(features_train)
+from sklearn import tree
+from sklearn.metrics import accuracy_score
 
+clf = tree.DecisionTreeClassifier()
 
+clf = clf.fit(features_train, labels_train)
 
+pred = clf.predict(features_test)
+
+print "accuracy score: %f" % accuracy_score(labels_test, pred)
+
+maxI = 0
+max = 0
+for i in range(0,len(features_train[0])):
+    if clf.feature_importances_[i]>max:
+        max = clf.feature_importances_[i]
+        maxI = i
+
+print "max feature_importances_[%d]: %s"%(maxI, max)
